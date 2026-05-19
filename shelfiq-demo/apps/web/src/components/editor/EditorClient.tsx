@@ -10,6 +10,7 @@ import { Toolbar } from "./Toolbar";
 import { CanvasStage } from "./CanvasStage";
 import { RightRail } from "./RightRail";
 import { DragGhost } from "./DragGhost";
+import { WhatIfPanel } from "./WhatIfPanel";
 import { useEditorShortcuts } from "./useEditorShortcuts";
 import { useCanvasStore } from "@/lib/stores/canvasStore";
 
@@ -70,6 +71,7 @@ export function EditorClient({ planId }: { planId: string }) {
         <RightRail />
       </div>
       <DragGhost />
+      <WhatIfPanel />
     </div>
   );
 }

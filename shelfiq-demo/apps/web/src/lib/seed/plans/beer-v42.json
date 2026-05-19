@@ -1,0 +1,50 @@
+{
+  "id": "beer-v42",
+  "name": "Beer Cooler — Urban Premium",
+  "version": "v4.2",
+  "category": "Beer",
+  "banner": "Quikstop Core",
+  "cluster": "Urban Premium",
+  "status": "in-review",
+  "effectiveDate": "2026-05-26T00:00:00Z",
+  "owner": {
+    "id": "user-maria-chen",
+    "name": "Maria Chen",
+    "avatar": "https://i.pravatar.cc/96?img=47"
+  },
+  "fixtureId": "fix-beer-cooler-5d",
+  "parentVersionId": "beer-v41",
+  "positions": [
+    { "id": "bv41-d0-s0", "productId": "p-bud-light",       "doorIndex": 0, "shelfIndex": 0, "slotIndex": 0, "facings": 1, "daypart": ["afternoon", "late-night"] },
+    { "id": "bv41-d0-s1", "productId": "p-bud-light",       "doorIndex": 0, "shelfIndex": 1, "slotIndex": 0, "facings": 1, "daypart": ["afternoon", "late-night"] },
+    { "id": "bv41-d0-s2", "productId": "p-coors-light",     "doorIndex": 0, "shelfIndex": 2, "slotIndex": 0, "facings": 1, "daypart": ["afternoon", "late-night"] },
+    { "id": "bv41-d0-s3", "productId": "p-modelo",          "doorIndex": 0, "shelfIndex": 3, "slotIndex": 0, "facings": 1, "daypart": ["afternoon", "late-night"] },
+    { "id": "bv41-d0-s4", "productId": "p-truly-margarita", "doorIndex": 0, "shelfIndex": 4, "slotIndex": 0, "facings": 1, "daypart": ["afternoon", "late-night"] },
+
+    { "id": "bv41-d1-s0", "productId": "p-bud-light",       "doorIndex": 1, "shelfIndex": 0, "slotIndex": 0, "facings": 1, "daypart": ["afternoon", "late-night"] },
+    { "id": "bv41-d1-s1", "productId": "p-coors-light",     "doorIndex": 1, "shelfIndex": 1, "slotIndex": 0, "facings": 1, "daypart": ["afternoon", "late-night"] },
+    { "id": "bv41-d1-s2", "productId": "p-modelo",          "doorIndex": 1, "shelfIndex": 2, "slotIndex": 0, "facings": 1, "daypart": ["afternoon", "late-night"] },
+    { "id": "bv41-d1-s3", "productId": "p-modelo",          "doorIndex": 1, "shelfIndex": 3, "slotIndex": 0, "facings": 1, "daypart": ["afternoon", "late-night"] },
+    { "id": "bv41-d1-s4", "productId": "p-truly-margarita", "doorIndex": 1, "shelfIndex": 4, "slotIndex": 0, "facings": 1, "daypart": ["afternoon", "late-night"] },
+
+    { "id": "bv41-d2-s0", "productId": "p-bud-light",       "doorIndex": 2, "shelfIndex": 0, "slotIndex": 0, "facings": 1, "daypart": ["afternoon", "late-night"] },
+    { "id": "bv41-d2-s1", "productId": "p-coors-light",     "doorIndex": 2, "shelfIndex": 1, "slotIndex": 0, "facings": 1, "daypart": ["afternoon", "late-night"] },
+    { "id": "bv41-d2-s2", "productId": "p-modelo",          "doorIndex": 2, "shelfIndex": 2, "slotIndex": 0, "facings": 1, "daypart": ["afternoon", "late-night"] },
+    { "id": "bv41-d2-s3", "productId": "p-modelo",          "doorIndex": 2, "shelfIndex": 3, "slotIndex": 0, "facings": 1, "daypart": ["afternoon", "late-night"] },
+    { "id": "bv41-d2-s4", "productId": "p-heineken",        "doorIndex": 2, "shelfIndex": 4, "slotIndex": 0, "facings": 1, "daypart": ["afternoon", "late-night"] },
+
+    { "id": "bv41-d3-s0", "productId": "p-bud-light",       "doorIndex": 3, "shelfIndex": 0, "slotIndex": 0, "facings": 1, "daypart": ["afternoon", "late-night"] },
+    { "id": "bv41-d3-s1", "productId": "p-coors-light",     "doorIndex": 3, "shelfIndex": 1, "slotIndex": 0, "facings": 1, "daypart": ["afternoon", "late-night"] },
+    { "id": "bv41-d3-s2", "productId": "p-white-claw",      "doorIndex": 3, "shelfIndex": 2, "slotIndex": 0, "facings": 5, "daypart": ["afternoon", "late-night"] },
+    { "id": "bv41-d3-s3", "productId": "p-truly-margarita", "doorIndex": 3, "shelfIndex": 3, "slotIndex": 0, "facings": 1, "daypart": ["afternoon", "late-night"] },
+    { "id": "bv41-d3-s4", "productId": "p-heineken",        "doorIndex": 3, "shelfIndex": 4, "slotIndex": 0, "facings": 1, "daypart": ["afternoon", "late-night"] },
+
+    { "id": "bv41-d4-s0", "productId": "p-bud-light",       "doorIndex": 4, "shelfIndex": 0, "slotIndex": 0, "facings": 1, "daypart": ["afternoon", "late-night"] },
+    { "id": "bv41-d4-s1", "productId": "p-coors-light",     "doorIndex": 4, "shelfIndex": 1, "slotIndex": 0, "facings": 1, "daypart": ["afternoon", "late-night"] },
+    { "id": "bv41-d4-s2", "productId": "p-truly-berry",     "doorIndex": 4, "shelfIndex": 2, "slotIndex": 0, "facings": 1, "daypart": ["afternoon", "late-night"] },
+    { "id": "bv41-d4-s3", "productId": "p-stella",          "doorIndex": 4, "shelfIndex": 3, "slotIndex": 0, "facings": 1, "daypart": ["late-night"] },
+    { "id": "bv41-d4-s4", "productId": "p-stella",          "doorIndex": 4, "shelfIndex": 4, "slotIndex": 0, "facings": 1, "daypart": ["late-night"] }
+  ],
+  "createdAt": "2026-05-10T09:00:00Z",
+  "updatedAt": "2026-05-15T14:22:00Z"
+}

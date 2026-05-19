@@ -11,6 +11,7 @@ import planogramsData from "./planograms.json";
 import dashboardData from "./dashboard.json";
 
 import beerV41 from "./plans/beer-v41.json";
+import beerV42 from "./plans/beer-v42.json";
 import energyQ2 from "./plans/energy-q2-draft.json";
 import saltyV3 from "./plans/salty-v3.json";
 import rollerV2 from "./plans/roller-v2.json";
@@ -27,6 +28,7 @@ export const users = usersData as SeedUser[];
 
 export const plans: Record<string, Plan> = {
   "beer-v41": beerV41 as unknown as Plan,
+  "beer-v42": beerV42 as unknown as Plan,
   "energy-q2-draft": energyQ2 as unknown as Plan,
   "salty-v3": saltyV3 as unknown as Plan,
   "roller-v2": rollerV2 as unknown as Plan,

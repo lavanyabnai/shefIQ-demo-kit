@@ -3,6 +3,7 @@ import * as React from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useCanvasStore, type RightRailTab } from "@/lib/stores/canvasStore";
 import { PropertiesPanel } from "./PropertiesPanel";
+import { InsightsPanel } from "./InsightsPanel";
 
 export function RightRail() {
   const selectedId = useCanvasStore((s) => s.selectedPositionId);
@@ -39,8 +40,8 @@ export function RightRail() {
         <TabsContent value="rules" className="m-0 flex-1 overflow-y-auto px-4 py-6 text-[12px] text-muted-foreground">
           Plan-level rules — capability arrives in a later session.
         </TabsContent>
-        <TabsContent value="analytics" className="m-0 flex-1 overflow-y-auto px-4 py-6 text-[12px] text-muted-foreground">
-          Live aggregates (top over-/under-spaced, subcategory breakdown) ship in Session 4.
+        <TabsContent value="analytics" className="m-0 flex-1 overflow-hidden">
+          <InsightsPanel />
         </TabsContent>
         <TabsContent value="agent" className="m-0 flex-1 overflow-y-auto px-4 py-6 text-[12px] text-muted-foreground">
           The AI agent panel ships in Session 5.

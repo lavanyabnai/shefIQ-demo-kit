@@ -32,6 +32,31 @@ const SHELF_PADDING_Y = 2;
 interface CanvasStageInnerProps {
   width: number;
   height: number;
+  /**
+   * If provided, the stage reads + writes its scale/origin from
+   * `canvasStore.viewports[viewportId]`. When two stages share the same id
+   * (the compare view), they mirror pan/zoom automatically. If omitted, the
+   * stage uses the current plan's id, which gives the editor a stable per-
+   * plan viewport that persists across re-mounts.
+   */
+  viewportId?: string;
+  /**
+   * If true the stage renders read-only (no selection, no drag, no
+   * placement). Used by the compare view.
+   */
+  readOnly?: boolean;
+  /**
+   * If non-null, that position id gets a yellow ring (cross-canvas hover
+   * highlight from the change rail in compare).
+   */
+  highlightedPositionId?: string | null;
+  /**
+   * If provided, used INSTEAD of canvasStore.plan. Lets the compare view
+   * render two different plans simultaneously. When provided, the stage
+   * does not call setSelection / placeProduct (it's read-only by virtue of
+   * having no shared store binding).
+   */
+  planOverride?: import("@/lib/types").Plan;
 }
 
 interface Slot {
@@ -50,8 +75,16 @@ interface SlotTarget {
   slotIndex: number;
 }
 
-export default function CanvasStageInner({ width, height }: CanvasStageInnerProps) {
-  const plan = useCanvasStore((s) => s.plan);
+export default function CanvasStageInner({
+  width,
+  height,
+  viewportId: viewportIdProp,
+  readOnly = false,
+  highlightedPositionId = null,
+  planOverride,
+}: CanvasStageInnerProps) {
+  const storePlan = useCanvasStore((s) => s.plan);
+  const plan = planOverride ?? storePlan;
   const selectedId = useCanvasStore((s) => s.selectedPositionId);
   const draggedProductId = useCanvasStore((s) => s.draggedProductId);
   const viewSettings = useCanvasStore((s) => s.viewSettings);
@@ -60,9 +93,28 @@ export default function CanvasStageInner({ width, height }: CanvasStageInnerProp
   const setSelection = useCanvasStore((s) => s.setSelection);
   const setDraggedProduct = useCanvasStore((s) => s.setDraggedProduct);
   const placeProduct = useCanvasStore((s) => s.placeProduct);
+  const setViewport = useCanvasStore((s) => s.setViewport);
   const stageRef = React.useRef<Konva.Stage | null>(null);
   const [hoveredPositionId, setHoveredPositionId] = React.useState<string | null>(null);
   const [hoverPoint, setHoverPoint] = React.useState<{ x: number; y: number } | null>(null);
+
+  const viewportId = viewportIdProp ?? plan?.id ?? "default";
+  const viewport = useCanvasStore((s) => s.viewports[viewportId]);
+  const scale = viewport?.scale ?? INITIAL_PX_PER_INCH;
+  // Memoize the origin so its identity is stable across renders when the
+  // underlying x/y haven't changed (prevents downstream effect re-fires).
+  const originX = viewport?.origin?.x ?? 0;
+  const originY = viewport?.origin?.y ?? 0;
+  const origin = React.useMemo(() => ({ x: originX, y: originY }), [originX, originY]);
+  const initialized = !!viewport;
+  const setScale = React.useCallback(
+    (next: number) => setViewport(viewportId, { scale: next }),
+    [setViewport, viewportId]
+  );
+  const setOrigin = React.useCallback(
+    (next: { x: number; y: number }) => setViewport(viewportId, { origin: next }),
+    [setViewport, viewportId]
+  );
 
   const productById = React.useMemo(
     () => new Map(allProducts.map((p) => [p.id, p])),
@@ -73,8 +125,6 @@ export default function CanvasStageInner({ width, height }: CanvasStageInnerProp
     [plan, heatmapMode, productById]
   );
 
-  const [scale, setScale] = React.useState(INITIAL_PX_PER_INCH);
-  const [origin, setOrigin] = React.useState({ x: 0, y: 0 });
   const [isPanning, setIsPanning] = React.useState(false);
   const panStart = React.useRef<{ x: number; y: number; ox: number; oy: number } | null>(null);
   const [hoverSlot, setHoverSlot] = React.useState<SlotTarget | null>(null);
@@ -98,12 +148,15 @@ export default function CanvasStageInner({ width, height }: CanvasStageInnerProp
       x: (width - renderedW) / 2,
       y: PADDING_TOP + (height - PADDING_TOP - PADDING_BOTTOM - renderedH) / 2,
     });
-  }, [fixture, width, height]);
+  }, [fixture, width, height, setScale, setOrigin]);
 
-  // Initial fit on plan / size change.
+  // Initial fit when the viewport hasn't been initialized yet, or when the
+  // container dimensions change.
   React.useEffect(() => {
-    fitToView();
-  }, [fitToView]);
+    if (!initialized && width > 0 && height > 0) {
+      fitToView();
+    }
+  }, [fitToView, initialized, width, height]);
 
   // Toolbar zoom commands.
   React.useEffect(() => {
@@ -121,7 +174,7 @@ export default function CanvasStageInner({ width, height }: CanvasStageInnerProp
     const worldY = (cy - origin.y) / scale;
     setScale(next);
     setOrigin({ x: cx - worldX * next, y: cy - worldY * next });
-  }, [zoomCommand, fitToView, scale, origin, width, height]);
+  }, [zoomCommand, fitToView, scale, origin, width, height, setScale, setOrigin]);
 
   // Suppress browser context menu on stage container.
   React.useEffect(() => {
@@ -174,8 +227,7 @@ export default function CanvasStageInner({ width, height }: CanvasStageInnerProp
       panStart.current = { x: e.evt.clientX, y: e.evt.clientY, ox: origin.x, oy: origin.y };
       return;
     }
-    if (e.evt.button === 0) {
-      // Left-click on empty canvas deselects.
+    if (e.evt.button === 0 && !readOnly) {
       if (e.target === e.target.getStage()) {
         setSelection(null);
       }
@@ -201,6 +253,11 @@ export default function CanvasStageInner({ width, height }: CanvasStageInnerProp
   const handleMouseUp = (e: Konva.KonvaEventObject<MouseEvent>) => {
     setIsPanning(false);
     panStart.current = null;
+
+    if (readOnly) {
+      void e;
+      return;
+    }
 
     if (draggedProductId && hoverSlot) {
       const product = findProduct(draggedProductId);
@@ -519,9 +576,12 @@ export default function CanvasStageInner({ width, height }: CanvasStageInnerProp
                 scale={scale}
                 originX={origin.x}
                 originY={origin.y}
-                selected={selectedId === pos.id}
+                selected={!readOnly && selectedId === pos.id}
+                highlighted={highlightedPositionId === pos.id}
                 heatmapDatum={datum}
-                onSelect={() => setSelection(pos.id)}
+                onSelect={() => {
+                  if (!readOnly) setSelection(pos.id);
+                }}
                 onHover={(point) => {
                   setHoveredPositionId(pos.id);
                   setHoverPoint(point);
@@ -546,6 +606,7 @@ function PositionRect({
   originX,
   originY,
   selected,
+  highlighted = false,
   heatmapDatum,
   onSelect,
   onHover,
@@ -558,6 +619,7 @@ function PositionRect({
   originX: number;
   originY: number;
   selected: boolean;
+  highlighted?: boolean;
   heatmapDatum: HeatmapDatum | null;
   onSelect: () => void;
   onHover: (point: { x: number; y: number }) => void;
@@ -594,12 +656,14 @@ function PositionRect({
         width={w}
         height={h}
         fill={fill}
-        stroke={selected ? "#0f766e" : "rgba(15, 23, 42, 0.35)"}
-        strokeWidth={selected ? 2.5 : 1}
+        stroke={
+          highlighted ? "#facc15" : selected ? "#0f766e" : "rgba(15, 23, 42, 0.35)"
+        }
+        strokeWidth={highlighted ? 3 : selected ? 2.5 : 1}
         cornerRadius={2}
-        shadowColor={selected ? "#0f766e" : undefined}
-        shadowBlur={selected ? 8 : 0}
-        shadowOpacity={selected ? 0.35 : 0}
+        shadowColor={highlighted ? "#facc15" : selected ? "#0f766e" : undefined}
+        shadowBlur={highlighted ? 10 : selected ? 8 : 0}
+        shadowOpacity={highlighted ? 0.55 : selected ? 0.35 : 0}
       />
       {w > 32 && h > 18 && (
         <Text

@@ -25,6 +25,11 @@ const HISTORY_LIMIT = 20;
 export type RightRailTab = "properties" | "rules" | "analytics" | "agent";
 export type ViewMode = "2d" | "3d";
 export type ZoomCommand = { kind: "in" | "out" | "fit"; nonce: number } | null;
+export interface Viewport {
+  scale: number;
+  origin: { x: number; y: number };
+  fitNonce: number;
+}
 
 interface CanvasState {
   // ----- Drafts (persisted across editor sessions) -----
@@ -41,6 +46,12 @@ interface CanvasState {
   viewSettings: { grid: boolean; snap: boolean; ruler: boolean; mode: ViewMode };
   rightRailTab: RightRailTab;
   zoomCommand: ZoomCommand;
+  /**
+   * Viewports keyed by an arbitrary id (typically planId for the editor or
+   * `compare:<a>:<b>` for the compare view). Lifted here so two side-by-side
+   * canvas stages can share pan/zoom state in the compare view.
+   */
+  viewports: Record<string, Viewport>;
   isDirty: boolean;
   history: { past: Plan[]; future: Plan[] };
 
@@ -75,6 +86,9 @@ interface CanvasState {
   ) => void;
   setRightRailTab: (tab: RightRailTab) => void;
   requestZoom: (kind: "in" | "out" | "fit") => void;
+
+  /** Set or patch the viewport for a given id. Creates one if absent. */
+  setViewport: (id: string, partial: Partial<Viewport>) => void;
 
   // Persistence + history
   save: () => void;
@@ -129,6 +143,7 @@ export const useCanvasStore = create<CanvasState>((set, get) => ({
   viewSettings: { grid: false, snap: true, ruler: true, mode: "2d" },
   rightRailTab: "properties",
   zoomCommand: null,
+  viewports: {},
   isDirty: false,
   history: { past: [], future: [] },
 
@@ -246,6 +261,21 @@ export const useCanvasStore = create<CanvasState>((set, get) => ({
   setRightRailTab: (tab) => set({ rightRailTab: tab }),
   requestZoom: (kind) =>
     set({ zoomCommand: { kind, nonce: Math.random() } }),
+
+  setViewport: (id, partial) =>
+    set((s) => {
+      const prev = s.viewports[id] ?? {
+        scale: 6,
+        origin: { x: 0, y: 0 },
+        fitNonce: 0,
+      };
+      return {
+        viewports: {
+          ...s.viewports,
+          [id]: { ...prev, ...partial },
+        },
+      };
+    }),
 
   // save: copies the current plan back to draftPlans (overwriting the prior
   // snapshot). Promotes status from any non-live state to "draft" so the

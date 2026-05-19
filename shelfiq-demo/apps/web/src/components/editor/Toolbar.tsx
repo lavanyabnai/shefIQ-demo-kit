@@ -1,5 +1,6 @@
 "use client";
 import * as React from "react";
+import { useRouter } from "next/navigation";
 import {
   Undo2,
   Redo2,
@@ -16,6 +17,7 @@ import {
   Thermometer,
   ChevronDown,
   Check,
+  Calculator,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -30,6 +32,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { toast } from "@/components/ui/toast";
 import { useCanvasStore } from "@/lib/stores/canvasStore";
+import { useWhatIfStore } from "@/lib/stores/whatIfStore";
 import type { HeatmapMode } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -43,6 +46,8 @@ const HEATMAP_LABELS: Record<HeatmapMode, string> = {
 };
 
 export function Toolbar() {
+  const router = useRouter();
+  const plan = useCanvasStore((s) => s.plan);
   const heatmapMode = useCanvasStore((s) => s.heatmapMode);
   const setHeatmap = useCanvasStore((s) => s.setHeatmap);
   const viewSettings = useCanvasStore((s) => s.viewSettings);
@@ -52,6 +57,7 @@ export function Toolbar() {
   const redo = useCanvasStore((s) => s.redo);
   const history = useCanvasStore((s) => s.history);
   const setRightRailTab = useCanvasStore((s) => s.setRightRailTab);
+  const openWhatIf = useWhatIfStore((s) => s.open);
 
   return (
     <div className="flex h-11 shrink-0 items-center gap-1 border-b border-border bg-card/60 px-3">
@@ -153,11 +159,32 @@ export function Toolbar() {
           variant="outline"
           size="sm"
           className="h-8 gap-1.5"
-          onClick={() =>
-            toast.message("Version compare", {
-              description: "Side-by-side compare ships in Session 4.",
-            })
-          }
+          onClick={() => {
+            if (plan) openWhatIf(plan);
+          }}
+          disabled={!plan}
+        >
+          <Calculator className="h-3.5 w-3.5" /> What-If
+        </Button>
+        <Button
+          variant="outline"
+          size="sm"
+          className="h-8 gap-1.5"
+          onClick={() => {
+            if (!plan) return;
+            // If the loaded plan is itself a derivative, compare it against
+            // its parent. Otherwise default to the known v4.1 → v4.2 demo pair.
+            const baseId = plan.parentVersionId ?? plan.id;
+            const vsId =
+              plan.parentVersionId ? plan.id : plan.id === "beer-v41" ? "beer-v42" : plan.id;
+            if (baseId === vsId) {
+              toast.message("No companion version yet", {
+                description: "Create a What-If apply, then come back to compare.",
+              });
+              return;
+            }
+            router.push(`/planograms/${baseId}/compare/${vsId}`);
+          }}
         >
           <GitCompare className="h-3.5 w-3.5" /> Compare versions
         </Button>
