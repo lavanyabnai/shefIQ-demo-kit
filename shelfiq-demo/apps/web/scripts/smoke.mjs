@@ -39,7 +39,9 @@ const PROBES = [
   // Modal opens after hydration; only check the table renders behind it.
   { session: 2, path: "/planograms?new=true",       expectStatus: 200, markers: ["Beer Cooler"] },
   { session: 2, path: "/planograms/new",            expectStatus: 307, markers: [] },
-  { session: 2, path: "/planograms/beer-v41",       expectStatus: 200, markers: ["Editor will load here for beer-v41"] },
+  // Editor pages are client-rendered (Konva ssr:false). Probe shell only.
+  { session: 3, path: "/planograms/beer-v41",       expectStatus: 200, markers: ["ShelfIQ", "Planograms"] },
+  { session: 3, path: "/planograms/energy-q2-draft",expectStatus: 200, markers: ["ShelfIQ", "Planograms"] },
   { session: 2, path: "/stores",                    expectStatus: 200, markers: [
     "Stores",
     "Urban Premium",

@@ -30,6 +30,14 @@ export type StoreFormat = "urban" | "suburban" | "highway";
 
 export type SwingDirection = "left" | "right" | "french";
 
+export type HeatmapMode =
+  | "none"
+  | "space-to-sales"
+  | "velocity"
+  | "gmroi"
+  | "dos"
+  | "margin";
+
 export interface Dimensions {
   w: number;
   h: number;
