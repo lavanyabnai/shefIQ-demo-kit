@@ -1,0 +1,23 @@
+[
+  {
+    "id": "user-maria-chen",
+    "name": "Maria Chen",
+    "avatar": "https://i.pravatar.cc/96?img=47",
+    "role": "Category Manager",
+    "team": "Cold Beverages & Energy"
+  },
+  {
+    "id": "user-john-park",
+    "name": "John Park",
+    "avatar": "https://i.pravatar.cc/96?img=12",
+    "role": "Compliance Lead",
+    "team": "Field Operations"
+  },
+  {
+    "id": "user-priya-shah",
+    "name": "Priya Shah",
+    "avatar": "https://i.pravatar.cc/96?img=32",
+    "role": "Regional Manager",
+    "team": "DFW Region"
+  }
+]

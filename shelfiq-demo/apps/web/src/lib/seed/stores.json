@@ -1,0 +1,68 @@
+[
+  {
+    "id": "store-1247",
+    "number": "1247",
+    "name": "Quikstop #1247 — Lower Greenville",
+    "address": { "city": "Dallas", "state": "TX", "lat": 32.823, "lng": -96.770 },
+    "banner": "Quikstop Core",
+    "cluster": "Urban Premium",
+    "sqft": 3200,
+    "format": "urban",
+    "compliancePct": 0.96
+  },
+  {
+    "id": "store-0312",
+    "number": "0312",
+    "name": "Quikstop #0312 — South Congress",
+    "address": { "city": "Austin", "state": "TX", "lat": 30.250, "lng": -97.749 },
+    "banner": "Quikstop Core",
+    "cluster": "Urban Premium",
+    "sqft": 2950,
+    "format": "urban",
+    "compliancePct": 0.94
+  },
+  {
+    "id": "store-0488",
+    "number": "0488",
+    "name": "Quikstop #0488 — Plano Legacy",
+    "address": { "city": "Plano", "state": "TX", "lat": 33.083, "lng": -96.704 },
+    "banner": "Quikstop Express",
+    "cluster": "Suburban Family",
+    "sqft": 4100,
+    "format": "suburban",
+    "compliancePct": 0.87
+  },
+  {
+    "id": "store-0521",
+    "number": "0521",
+    "name": "Quikstop #0521 — Frisco North",
+    "address": { "city": "Frisco", "state": "TX", "lat": 33.151, "lng": -96.825 },
+    "banner": "Quikstop Express",
+    "cluster": "Suburban Family",
+    "sqft": 4350,
+    "format": "suburban",
+    "compliancePct": 0.92
+  },
+  {
+    "id": "store-0894",
+    "number": "0894",
+    "name": "Quikstop #0894 — I-35 Temple",
+    "address": { "city": "Temple", "state": "TX", "lat": 31.098, "lng": -97.343 },
+    "banner": "Quikstop Fuel",
+    "cluster": "Highway Travel",
+    "sqft": 2200,
+    "format": "highway",
+    "compliancePct": 0.81
+  },
+  {
+    "id": "store-1102",
+    "number": "1102",
+    "name": "Quikstop #1102 — I-35 Waco",
+    "address": { "city": "Waco", "state": "TX", "lat": 31.549, "lng": -97.146 },
+    "banner": "Quikstop Fuel",
+    "cluster": "Highway Travel",
+    "sqft": 2100,
+    "format": "highway",
+    "compliancePct": 0.78
+  }
+]

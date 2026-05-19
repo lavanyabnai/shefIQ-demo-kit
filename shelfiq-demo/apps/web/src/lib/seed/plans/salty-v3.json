@@ -1,0 +1,25 @@
+{
+  "id": "salty-v3",
+  "name": "Salty Snacks Endcap v3",
+  "version": "v3",
+  "category": "Salty Snacks",
+  "banner": "Quikstop Core",
+  "cluster": "Suburban Family",
+  "status": "approved",
+  "effectiveDate": "2026-03-01T00:00:00Z",
+  "owner": {
+    "id": "user-john-park",
+    "name": "John Park",
+    "avatar": "https://i.pravatar.cc/96?img=12"
+  },
+  "fixtureId": "fix-endcap",
+  "positions": [
+    { "id": "sv3-d0-s0", "productId": "p-doritos-nacho", "doorIndex": 0, "shelfIndex": 0, "slotIndex": 0, "facings": 3, "daypart": ["morning", "afternoon", "late-night"] },
+    { "id": "sv3-d0-s1", "productId": "p-lays",          "doorIndex": 0, "shelfIndex": 1, "slotIndex": 0, "facings": 3, "daypart": ["morning", "afternoon", "late-night"] },
+    { "id": "sv3-d0-s2", "productId": "p-cheetos",       "doorIndex": 0, "shelfIndex": 2, "slotIndex": 0, "facings": 2, "daypart": ["afternoon", "late-night"] },
+    { "id": "sv3-d0-s3", "productId": "p-pringles",      "doorIndex": 0, "shelfIndex": 3, "slotIndex": 0, "facings": 3, "daypart": ["morning", "afternoon", "late-night"] },
+    { "id": "sv3-d0-s4", "productId": "p-doritos-nacho", "doorIndex": 0, "shelfIndex": 4, "slotIndex": 0, "facings": 2, "daypart": ["afternoon", "late-night"] }
+  ],
+  "createdAt": "2026-02-20T11:00:00Z",
+  "updatedAt": "2026-02-28T16:45:00Z"
+}

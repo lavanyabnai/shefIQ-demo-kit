@@ -1,0 +1,65 @@
+[
+  {
+    "id": "fix-beer-cooler-5d",
+    "name": "5-Door Beer Cooler",
+    "type": "cold-vault",
+    "dimensions": { "w": 90, "h": 78, "d": 30 },
+    "doors": 5,
+    "shelvesPerDoor": 5,
+    "temperature": 34,
+    "swingDirection": "right"
+  },
+  {
+    "id": "fix-energy-cooler-3d",
+    "name": "3-Door Energy Cooler",
+    "type": "cold-vault",
+    "dimensions": { "w": 60, "h": 78, "d": 30 },
+    "doors": 3,
+    "shelvesPerDoor": 5,
+    "temperature": 34,
+    "swingDirection": "right"
+  },
+  {
+    "id": "fix-walkin-8d",
+    "name": "8-Door Walk-In Cooler",
+    "type": "cold-vault",
+    "dimensions": { "w": 192, "h": 84, "d": 96 },
+    "doors": 8,
+    "shelvesPerDoor": 6,
+    "temperature": 34,
+    "swingDirection": "french"
+  },
+  {
+    "id": "fix-rollergrill-18",
+    "name": "Roller Grill 18-Slot",
+    "type": "rollergrill",
+    "dimensions": { "w": 36, "h": 22, "d": 22 }
+  },
+  {
+    "id": "fix-tobacco-6t",
+    "name": "Tobacco Gantry 6-Tier",
+    "type": "tobacco-gantry",
+    "dimensions": { "w": 48, "h": 72, "d": 12 },
+    "shelvesPerDoor": 6
+  },
+  {
+    "id": "fix-gondola-16",
+    "name": "16ft Gondola Run",
+    "type": "gondola",
+    "dimensions": { "w": 192, "h": 72, "d": 18 },
+    "shelvesPerDoor": 6
+  },
+  {
+    "id": "fix-counter",
+    "name": "Counter Impulse",
+    "type": "counter",
+    "dimensions": { "w": 48, "h": 18, "d": 18 }
+  },
+  {
+    "id": "fix-endcap",
+    "name": "Endcap Standard",
+    "type": "endcap",
+    "dimensions": { "w": 36, "h": 72, "d": 18 },
+    "shelvesPerDoor": 5
+  }
+]

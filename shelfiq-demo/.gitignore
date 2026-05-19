@@ -1,0 +1,34 @@
+# Claude Code working directory
+.claude/
+
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Next.js / build output
+.next/
+out/
+build/
+dist/
+
+# Env files
+.env.local
+.env*.local
+
+# TS build info
+*.tsbuildinfo
+next-env.d.ts
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

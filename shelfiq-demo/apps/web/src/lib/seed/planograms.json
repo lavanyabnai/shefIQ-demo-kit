@@ -1,0 +1,93 @@
+[
+  {
+    "id": "beer-v41",
+    "name": "Beer Cooler — Urban Premium",
+    "version": "v4.1",
+    "category": "Beer",
+    "banner": "Quikstop Core",
+    "cluster": "Urban Premium",
+    "status": "live",
+    "effectiveDate": "2026-01-15T00:00:00Z",
+    "updatedAt": "2026-01-15T09:14:00Z",
+    "skuCount": 8,
+    "facingCount": 29,
+    "owner": {
+      "id": "user-maria-chen",
+      "name": "Maria Chen",
+      "avatar": "https://i.pravatar.cc/96?img=47"
+    }
+  },
+  {
+    "id": "beer-v42",
+    "name": "Beer Cooler — Urban Premium",
+    "version": "v4.2",
+    "category": "Beer",
+    "banner": "Quikstop Core",
+    "cluster": "Urban Premium",
+    "status": "in-review",
+    "effectiveDate": "2026-05-26T00:00:00Z",
+    "updatedAt": "2026-05-15T14:22:00Z",
+    "skuCount": 8,
+    "facingCount": 29,
+    "owner": {
+      "id": "user-maria-chen",
+      "name": "Maria Chen",
+      "avatar": "https://i.pravatar.cc/96?img=47"
+    },
+    "parentVersionId": "beer-v41"
+  },
+  {
+    "id": "energy-q2-draft",
+    "name": "Energy Reset Q2 — Urban Premium",
+    "version": "v0.1",
+    "category": "Energy",
+    "banner": "Quikstop Core",
+    "cluster": "Urban Premium",
+    "status": "draft",
+    "effectiveDate": "2026-06-01T00:00:00Z",
+    "updatedAt": "2026-05-19T15:00:00Z",
+    "skuCount": 0,
+    "facingCount": 0,
+    "owner": {
+      "id": "user-maria-chen",
+      "name": "Maria Chen",
+      "avatar": "https://i.pravatar.cc/96?img=47"
+    }
+  },
+  {
+    "id": "salty-v3",
+    "name": "Salty Snacks Endcap v3",
+    "version": "v3",
+    "category": "Salty Snacks",
+    "banner": "Quikstop Core",
+    "cluster": "Suburban Family",
+    "status": "approved",
+    "effectiveDate": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-02-28T16:45:00Z",
+    "skuCount": 4,
+    "facingCount": 13,
+    "owner": {
+      "id": "user-john-park",
+      "name": "John Park",
+      "avatar": "https://i.pravatar.cc/96?img=12"
+    }
+  },
+  {
+    "id": "roller-v2",
+    "name": "Roller Grill v2 — Highway Travel",
+    "version": "v2",
+    "category": "Foodservice",
+    "banner": "Quikstop Fuel",
+    "cluster": "Highway Travel",
+    "status": "live",
+    "effectiveDate": "2026-04-01T00:00:00Z",
+    "updatedAt": "2026-04-01T07:30:00Z",
+    "skuCount": 0,
+    "facingCount": 0,
+    "owner": {
+      "id": "user-priya-shah",
+      "name": "Priya Shah",
+      "avatar": "https://i.pravatar.cc/96?img=32"
+    }
+  }
+]

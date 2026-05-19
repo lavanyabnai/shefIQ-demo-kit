@@ -1,0 +1,19 @@
+{
+  "id": "roller-v2",
+  "name": "Roller Grill v2 — Highway Travel",
+  "version": "v2",
+  "category": "Foodservice",
+  "banner": "Quikstop Fuel",
+  "cluster": "Highway Travel",
+  "status": "live",
+  "effectiveDate": "2026-04-01T00:00:00Z",
+  "owner": {
+    "id": "user-priya-shah",
+    "name": "Priya Shah",
+    "avatar": "https://i.pravatar.cc/96?img=32"
+  },
+  "fixtureId": "fix-rollergrill-18",
+  "positions": [],
+  "createdAt": "2026-03-20T09:00:00Z",
+  "updatedAt": "2026-04-01T07:30:00Z"
+}

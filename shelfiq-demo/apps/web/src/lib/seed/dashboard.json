@@ -1,0 +1,89 @@
+{
+  "date": "2026-05-19T13:00:00Z",
+  "greeting": "Good afternoon, Maria",
+  "headline": "12 planograms are in review, 7 categories are due for reset in the next 8 weeks.",
+  "kpis": [
+    {
+      "id": "active-planograms",
+      "label": "Active planograms",
+      "value": "247",
+      "delta": "+12 this month",
+      "trend": "up",
+      "icon": "layers"
+    },
+    {
+      "id": "stores-on-latest",
+      "label": "Stores on latest version",
+      "value": "89%",
+      "delta": "1,109 of 1,247 · target 95%",
+      "trend": "neutral",
+      "progress": 0.89,
+      "icon": "store"
+    },
+    {
+      "id": "sales-per-linear-ft",
+      "label": "Avg. sales / linear ft",
+      "value": "$42.18",
+      "delta": "+3.2% vs last quarter",
+      "trend": "up",
+      "icon": "trending-up"
+    },
+    {
+      "id": "categories-due",
+      "label": "Categories due for reset",
+      "value": "7",
+      "delta": "2 overdue",
+      "trend": "down",
+      "icon": "alert-triangle"
+    }
+  ],
+  "resetCategoryColors": {
+    "Beer": "#0f766e",
+    "Energy": "#e11d48",
+    "Cold Beverages": "#2563eb",
+    "Salty Snacks": "#ea580c",
+    "Foodservice": "#a16207",
+    "Tobacco": "#7c3aed",
+    "Candy": "#db2777"
+  },
+  "resets": [
+    { "lane": 0, "week": 0, "name": "Beer Cooler v4.2 — Urban Premium",   "category": "Beer",            "days": 14, "owner": "Maria Chen" },
+    { "lane": 1, "week": 0, "name": "Energy Reset Q2 — Urban Premium",    "category": "Energy",          "days": 7,  "owner": "Maria Chen" },
+    { "lane": 0, "week": 2, "name": "Frozen Beverages — Highway Travel",  "category": "Cold Beverages",  "days": 10, "owner": "John Park"  },
+    { "lane": 2, "week": 1, "name": "Tobacco Compliance Audit",           "category": "Tobacco",         "days": 5,  "owner": "John Park"  },
+    { "lane": 0, "week": 4, "name": "Salty Snacks Endcap — Suburban",     "category": "Salty Snacks",    "days": 7,  "owner": "John Park"  },
+    { "lane": 1, "week": 5, "name": "Roller Grill Refresh",               "category": "Foodservice",     "days": 5,  "owner": "Priya Shah" },
+    { "lane": 2, "week": 6, "name": "Candy Aisle Reset",                  "category": "Candy",           "days": 7,  "owner": "John Park"  },
+    { "lane": 0, "week": 7, "name": "Cold Beverages Q3 Refresh",          "category": "Cold Beverages",  "days": 7,  "owner": "Maria Chen" }
+  ],
+  "activity": [
+    { "id": "act-1", "kind": "approve", "actor": "Maria Chen",   "verb": "approved",                            "object": "Energy Reset Q1 v2.3",                     "ago": "2h ago",            "actorAvatar": "https://i.pravatar.cc/64?img=47" },
+    { "id": "act-2", "kind": "vendor",  "actor": "Red Bull GmbH","verb": "submitted PSA file for",              "object": "Q2 Energy Reset",                          "ago": "4h ago",            "actorAvatar": null },
+    { "id": "act-3", "kind": "review",  "actor": "Priya Shah",   "verb": "requested changes on",                "object": "Beer Cooler v4.2",                         "ago": "Yesterday · 3:14 PM","actorAvatar": "https://i.pravatar.cc/64?img=32" },
+    { "id": "act-4", "kind": "alert",   "actor": "System",       "verb": "detected deviation at",               "object": "store #1102 — Tobacco Gantry",             "ago": "Yesterday · 11:02 AM","actorAvatar": null },
+    { "id": "act-5", "kind": "create",  "actor": "Maria Chen",   "verb": "created",                             "object": "Salty Snacks v3 draft",                    "ago": "2 days ago",        "actorAvatar": "https://i.pravatar.cc/64?img=47" },
+    { "id": "act-6", "kind": "publish", "actor": "John Park",    "verb": "uploaded compliance photos for",      "object": "store #1247 — Lower Greenville",           "ago": "3 days ago",        "actorAvatar": "https://i.pravatar.cc/64?img=12" }
+  ],
+  "topCategories": [
+    { "name": "Tobacco",        "salesPerLinearFt": 124.80, "wow": 1.2 },
+    { "name": "Energy Drinks",  "salesPerLinearFt": 58.40,  "wow": 3.8 },
+    { "name": "Hard Seltzer",   "salesPerLinearFt": 51.20,  "wow": 6.4 },
+    { "name": "Beer",           "salesPerLinearFt": 42.18,  "wow": 3.2 },
+    { "name": "Cold Beverages", "salesPerLinearFt": 38.10,  "wow": -0.4 },
+    { "name": "Salty Snacks",   "salesPerLinearFt": 29.50,  "wow": 0.9 },
+    { "name": "Candy",          "salesPerLinearFt": 24.10,  "wow": -1.1 },
+    { "name": "Sports Drinks",  "salesPerLinearFt": 21.80,  "wow": 2.4 }
+  ],
+  "compliance": {
+    "stores": ["#1247", "#0312", "#0488", "#0521", "#0894", "#1102"],
+    "categories": ["Beer", "Energy", "Cold Bev", "Snacks", "Candy", "Tobacco"],
+    "values": [
+      [0.98, 0.96, 0.95, 0.94, 0.97, 0.96],
+      [0.95, 0.97, 0.94, 0.93, 0.96, 0.94],
+      [0.88, 0.92, 0.86, 0.85, 0.91, 0.87],
+      [0.93, 0.94, 0.92, 0.91, 0.93, 0.92],
+      [0.82, 0.85, 0.79, 0.78, 0.83, 0.80],
+      [0.77, 0.81, 0.75, 0.74, 0.79, 0.78]
+    ]
+  }
+}

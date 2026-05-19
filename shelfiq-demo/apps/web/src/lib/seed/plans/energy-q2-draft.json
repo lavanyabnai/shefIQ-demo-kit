@@ -1,0 +1,19 @@
+{
+  "id": "energy-q2-draft",
+  "name": "Energy Reset Q2 — Urban Premium",
+  "version": "v0.1",
+  "category": "Energy",
+  "banner": "Quikstop Core",
+  "cluster": "Urban Premium",
+  "status": "draft",
+  "effectiveDate": "2026-06-01T00:00:00Z",
+  "owner": {
+    "id": "user-maria-chen",
+    "name": "Maria Chen",
+    "avatar": "https://i.pravatar.cc/96?img=47"
+  },
+  "fixtureId": "fix-energy-cooler-3d",
+  "positions": [],
+  "createdAt": "2026-05-19T15:00:00Z",
+  "updatedAt": "2026-05-19T15:00:00Z"
+}
